@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-end ">
+  <%= link_to "Create New Question" , new_question_path, :class => 'btn btn-outline-success' %>
+</div>
+<% @questions.each_with_index  do |question,index| %>
+  <div class="alert alert-light">
+    <p><span><%= index+1 %>. </span><%= question.description %></p>
+    <%= link_to "Read More" , question_path(question), :class => 'btn btn-outline-success' %>
+  </div>
+<% end %>

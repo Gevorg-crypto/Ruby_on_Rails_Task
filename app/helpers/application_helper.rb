@@ -1,0 +1,14 @@
+module ApplicationHelper
+
+  def logged_in?
+    !@current_user.nil?
+  end
+
+  # Confirms a logged-in user.
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "Please log in."
+      redirect_to new_admin_session_path
+    end
+  end
+end

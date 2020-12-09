@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Milion</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+<nav class="site-header sticky-top py-1" style="background-color: rgba(0, 0, 0, .85)">
+  <div class="container d-flex flex-column flex-md-row justify-content-between">
+    <% if admin_signed_in? %>
+      <span><%= link_to 'Home', home_path %></span>
+      <span><%= link_to 'Question', questions_path %></span>
+      <span>test</span>
+      <span><%= link_to 'Logout', config.sign_out_via = '/admins/sign_out', :method => :delete %></span>
+    <% else %>
+      <div>
+        <span><%= link_to 'Sign In', new_admin_session_path %></span>
+        <span><%= link_to 'Sign Up', new_admin_registration_path %></span>
+      </div>
+    <% end %>
+    <!--      <span><%#= link_to 'Show',post_path %></span>-->
+  </div>
+</nav>
+<div class="container">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <%= yield %>
+</div>
+
+</body>
+</html>
